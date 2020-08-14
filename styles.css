@@ -2,5 +2,10 @@ body {
     background-image: url("./assets/background.svg");
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+#main-wrapper {
     min-height: 100vh;
 }

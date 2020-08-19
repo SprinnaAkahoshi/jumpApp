@@ -12,13 +12,14 @@ function fetchData() {
                 searched = true;
                 var dnoneCollection = document.getElementsByClassName("d-none");
                 while (dnoneCollection.length){
+                    dnoneCollection[0].classList.add("slideup", "d-flex", "flex-column", "justify-content-center");
                     dnoneCollection[0].classList.remove("d-none");
                 }
             }
             for (var key in data){
-                var id = "#" + key;
-                var element = document.querySelector(id)
+                var element = document.getElementById(key);
                 if (element !== null){
+                    element.classList.add('mb-0');
                     switch (key){
                         case "zillowcomCDLiveDate":
                         case "bkCutoverDate":
@@ -34,6 +35,8 @@ function fetchData() {
                         case "historicalDataCorrections":
                             if (data[key]){
                                 element.innerHTML = "Yes";
+                            } else {
+                                element.innerHTML = "No";
                             }
                             break;
                         default:
@@ -41,9 +44,9 @@ function fetchData() {
                     }
                 }
             }
-            var countyState = data.county + ", " +  data.state
-            var countyStateDisplay = document.querySelector("#countyState")
-            countyStateDisplay.innerHTML = countyState;
+            var fipsCountyState = data.county + ", " +  data.state + " - " + data.fips;
+            var fipsCountyStateDisplay = document.querySelector("#countyState");
+            fipsCountyStateDisplay.innerHTML = fipsCountyState;
         }); 
 }
 
